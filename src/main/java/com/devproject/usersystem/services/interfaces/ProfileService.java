@@ -46,4 +46,6 @@ public interface ProfileService {
     Comment addSongCommentToProfile(Song song, String commentAuthorName, String content);
 
     void deleteCommentFromProfile(String username, Long id);
+
+    void addSongSuggestionToProfile(String username, SongUploadModel suggestionModel, MultipartFile image) throws IOException;
 }

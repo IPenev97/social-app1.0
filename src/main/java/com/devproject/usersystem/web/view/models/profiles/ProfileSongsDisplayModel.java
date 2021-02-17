@@ -19,4 +19,5 @@ public class ProfileSongsDisplayModel {
     private ImageModel profilePicture;
     private String firstName;
     private String lastName;
+    private List<Song>songSuggestions;
 }

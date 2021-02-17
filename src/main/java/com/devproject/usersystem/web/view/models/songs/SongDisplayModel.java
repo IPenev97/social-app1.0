@@ -15,4 +15,5 @@ public class SongDisplayModel {
     private String artist;
     private byte[] picBytes;
     private String songUrl;
+    private String suggestedByUsername;
 }

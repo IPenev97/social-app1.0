@@ -29,7 +29,6 @@ public class Song extends BaseEntity {
         Collections.reverse(returnList);
         return returnList;
     }
-    public Long likes;
-    public Long dislikes;
+    private String suggestedByUsername;
 
 }

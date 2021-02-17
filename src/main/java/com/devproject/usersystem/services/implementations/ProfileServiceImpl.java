@@ -264,6 +264,16 @@ public class ProfileServiceImpl implements ProfileService {
         profileRepository.save(profile);
     }
 
+    @Override
+    public void addSongSuggestionToProfile(String username, SongUploadModel suggestionModel, MultipartFile image) throws IOException {
+        Profile profile = profileRepository.getByUsername(username);
+        Song song = songService.uploadSong(suggestionModel,image);
+        profile.getSongSuggestions().add(song);
+        profileRepository.save(profile);
+
+
+    }
+
     private void editSong(SongUploadModel songModel, MultipartFile picture, Song song) throws IOException {
         if(!songModel.getName().equals(song.getName())){
             song.setName(songModel.getName());

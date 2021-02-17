@@ -13,4 +13,5 @@ public class SongUploadModel {
     private String name;
     private String artist;
     private String songUrl;
+    private String suggestedByUsername;
 }

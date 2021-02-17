@@ -61,6 +61,11 @@ public class Profile extends BaseEntity {
     private List<Comment>comments;
     @OneToOne(mappedBy = "profile")
     private User user;
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @JoinTable(name="profiles_suggestions",
+            joinColumns = @JoinColumn(name="profile_id"),
+            inverseJoinColumns = @JoinColumn(name = "song_id"))
+    private List<Song>songSuggestions;
 
 
 

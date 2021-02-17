@@ -51,50 +51,9 @@
 
 
 
-    <section class="details-card">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card-content">
-                        <div class="card-img">
-                            <img th:src="'data:image/jpeg;base64,' + ${displayProfile.getTop1song().getImage().generateBase64Image()}" alt="">
-                        </div>
-                        <div class="card-desc">
-                            <h3 th:text="${displayProfile.getTop1song().getName()}"></h3>
-                            <p th:text = "${displayProfile.getTop1song().getArtist()}"></p>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-content">
-                        <div class="card-img">
-                            <img th:src="'data:image/jpeg;base64,' + ${displayProfile.getTop2song().getImage().generateBase64Image()}" alt="">
-                        </div>
-                        <div class="card-desc">
-                            <h3 th:text="${displayProfile.getTop2song().getName()}"></h3>
-                            <p th:text = "${displayProfile.getTop2song().getArtist()}"></p>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-content">
-                        <div class="card-img">
-                            <img th:src="'data:image/jpeg;base64,' + ${displayProfile.getTop3song().getImage().generateBase64Image()}" alt="">
-                        </div>
-                        <div class="card-desc">
-                            <h3 th:text="${displayProfile.getTop3song().getName()}"></h3>
-                            <p th:text = "${displayProfile.getTop3song().getArtist()}"></p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div th:each="song : ${displayProfile.getSongs()}" class="col-10 song-list" >
+    <div th:each="song : ${displayProfile.getSongSuggestions()}" class="col-10 song-list" >
 
 
         <div class="media row">
@@ -206,7 +165,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form id="uploadSuggestionForm" action="#" th:action="@{/music/profile/{username}(username=${displayProfile.getUsername()})}" method="post"  enctype="multipart/form-data" >
+                    <form id="uploadSuggestionForm" action="#" th:action="@{/music/profile/{username}/suggestions(username=${displayProfile.getUsername()})}" method="post"  enctype="multipart/form-data" >
                         <label>
                             <p class="label-txt">Song Name</p>
                             <input type="text" required minlength="1" maxlength="20" name="name"  class="input">

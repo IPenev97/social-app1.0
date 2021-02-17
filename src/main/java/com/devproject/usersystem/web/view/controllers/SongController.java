@@ -149,10 +149,17 @@ public class SongController {
         ProfileSongsDisplayModel currentProfileModel = profileService.getProfileSongs(principal.getName());
         model.addAttribute("displayProfile", profileModel);
         model.addAttribute("currentProfile", currentProfileModel);
+        return "profile/otherProfile/songSuggestions";
     }
     @PostMapping("/music/profile/{username}/suggestions")
-    public String addSuggestion(@ModelAttribute SongSuggestionModel suggestionModel){
-
+    public String addSuggestion(@PathVariable String username,@RequestParam("file") MultipartFile file, @ModelAttribute SongUploadModel suggestionModel){
+        try {
+            profileService.addSongSuggestionToProfile(username, suggestionModel, file);
+        }
+        catch (IOException e){
+            //TODO : HANDLE exception
+        }
+        return "redirect:/music/profile/"+username+"/suggestions";
     }
 }
 

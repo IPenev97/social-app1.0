@@ -1,0 +1,485 @@
+.listing-block{width:100%;background:#fff; height:500px; padding-top:20px; overflow-y:scroll;}
+.media {background:#fff; position:relative; margin-bottom:15px;}
+.media img{width:200px;margin:0; height:136px;}
+.media-body{ border: 4px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12); border-left:0; height:136px;}
+.media .songName{float:left; width:100%; font-size:40px;font-weight:600; color:gray;}
+.media .songArtist {display:block; font-size:30px; color:#232323;}
+.song-list{margin-left: 130px;}
+.be-comment-block {
+    margin-bottom: 50px !important;
+    border: 1px solid #edeff2;
+    border-radius: 2px;
+    padding: 50px 70px;
+    border:1px solid #ffffff;
+}
+
+.comments-title {
+    font-size: 16px;
+    color: #262626;
+    margin-bottom: 15px;
+    font-family: 'Conv_helveticaneuecyr-bold';
+}
+
+.be-img-comment {
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.be-ava-comment {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.be-comment-content {
+    margin-left: 80px;
+}
+
+.be-comment-content span {
+    display: inline-block;
+    width: 49%;
+    margin-bottom: 15px;
+}
+
+.be-comment-name {
+    font-size: 13px;
+    font-family: 'Conv_helveticaneuecyr-bold';
+}
+
+.be-comment-content a {
+    color: #383b43;
+}
+
+.be-comment-content span {
+    display: inline-block;
+    width: 49%;
+    margin-bottom: 15px;
+}
+
+.be-comment-time {
+    text-align: right;
+}
+
+.be-comment-time {
+    font-size: 11px;
+    color: #b4b7c1;
+}
+
+.be-comment-text {
+    font-size: 13px;
+    line-height: 18px;
+    color: #7a8192;
+    display: block;
+    background: #f6f6f7;
+    border: 1px solid #edeff2;
+    padding: 15px 20px 20px 20px;
+}
+
+.input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+label {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 10px 10px;
+}
+.line-box {
+    position: relative;
+    width: 95%;
+    height: 2px;
+    background: gray;
+}
+.label-txt-error{
+    color:red;
+
+}
+.label-txt {
+
+
+    font-family: sans-serif;
+
+    text-align: center;
+    letter-spacing: 1px;
+    color: rgb(120,120,120);
+    transition: ease .3s;
+}
+
+.formSubmitButton {
+
+    padding: 12px 24px;
+    background: rgb(220,220,220);
+    font-weight: bold;
+    color: rgb(120,120,120);
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: ease .3s;
+    margin-left: 180px;
+    margin-top:50px;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.formSubmitButton:hover{
+
+    background: dimgrey;
+    color: white;
+}
+
+.uploadFile{
+    margin-left:110px;
+}
+
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+
+.sidebar-nav>.sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav>.sidebar-brand a {
+    color: #999999;
+}
+
+
+.sidebar-nav>.sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+#wrapper {
+    padding-left: 250px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    overflow:hidden;
+}
+
+#wrapper.toggled {
+    padding-left: 0px;
+}
+.btn{
+    margin-top:30px;
+}
+
+
+#sidebar-wrapper {
+
+    overflow:hidden;
+    position: fixed;
+
+    left: 250px;
+
+    width: 200px;
+
+    height: 100%;
+
+    margin-left: -250px;
+
+    background: black;
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+}
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 450px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+
+    height: 415px;
+    width: 300px;
+    margin-top: 10px;
+    overflow: auto;
+    visibility: hidden;
+    border:1px solid #ccc;
+
+
+}
+
+
+.sidenav-content,
+.sidenav:focus,
+.sidenav:hover {
+    visibility: visible;
+    background-color: #EAEDEE;
+    font:16px/26px Georgia, Garamond, Serif;
+
+
+}
+
+
+/* Set black background color, white text and some padding */
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+.header {
+    background-color: #F1F1F1;
+    text-align: center;
+    padding: 20px;
+    font-size: 4em;
+}
+.paragraph {
+    font-size: 2em;
+    text-align: center;
+    background-color: #F1F1F1;
+}
+.posts {
+    padding: 20px;
+    margin: 40px 10px 10px;
+    width: 1230px;
+    height: 600px;
+    border: 1px dashed black;
+
+
+}
+.sideBox{
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 500px;
+    width: 300px;
+
+}
+.AddSongButton
+{
+
+    padding: 12px 24px;
+    background: rgb(220,220,220);
+    font-weight: bold;
+    color: rgb(120,120,120) !important;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: ease .3s;
+
+
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.AddSongButton:hover{
+    background: dimgrey;
+    color: white !important;
+}
+.commentsButton, .likeButton, .dislikeButton
+{
+
+    width:81px;
+    height: 36px;
+    font-weight: bold;
+    color: rgb(120,120,120);
+    background-color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: ease .3s;
+    padding:3px;
+    border-radius: 50px;
+    outline:none;
+
+
+    font-size: 20px;
+
+
+
+
+}
+.likeButton{
+    margin-left:643px;
+}
+.commentsButton:hover, .active,  .likeButton:hover, .dislikeButton:hover{
+    background: dimgrey;
+    color: white;
+}
+.commentsButton:focus, .likeButton:focus, .dislikeButton:focus{
+    outline: none;
+}
+
+.editSongButton{
+    margin-top:70px;
+    margin-left: 20px;
+    position: relative;
+    top: 50%;
+
+}
+.uploadTopSongButton{
+    position: center;
+    margin-left: 30%;
+}
+.content{
+    margin-top: 55px;
+}
+#navbar {
+    overflow:hidden;
+    top:0;
+    width: 100%;
+    position:fixed;
+    z-index: 1000;
+}
+section{
+    padding: 100px 0;
+}
+.details-card {
+}
+
+.card-content {
+    background: #ffffff;
+    border: 4px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+.card-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+    z-index: 1;
+
+}
+
+.card-img img {
+    width: 100%;
+    height: 400px;
+    display: block;
+}
+
+.card-img span {
+    position: absolute;
+    top: 15%;
+    left: 12%;
+    background: #1ABC9C;
+    padding: 6px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    transform: translate(-50%,-50%);
+}
+.card-img span h4{
+    font-size: 12px;
+    margin:0;
+    padding:10px 5px;
+    line-height: 0;
+}
+.card-desc {
+    padding: 20px;
+}
+
+.card-desc h3 {
+    color: #000000;
+    font-weight: 600;
+    font-size: 1.5em;
+    line-height: 1.3em;
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.card-desc p {
+    color: #747373;
+    font-size: 14px;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0px;
+    margin-bottom: 20px;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+.topSongImage{
+    height: 400px;
+    width: 200px;
+}
+.modalSongImage {
+    width:120px;
+    height: 120px;
+}
+.comments{
+    display: none;
+    overflow: hidden;
+
+}
+.comment-icon, .dislikes-icon, .likes-icon{
+
+
+
+}
+
+.comments-count, .dislikes-count, .likes-count {
+
+}
+
+
+
+
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+
+
+
+
+

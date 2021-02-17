@@ -1,0 +1,302 @@
+<!doctype html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+    <link rel="stylesheet" href="/css/profile/otherProfile/songListStyle.css">
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="/scripts/songListScript.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+
+    <title>SongSuggestions</title>
+</head>
+<body>
+
+<th:block th:include="~{staticElements/topNav}"/>
+
+<div class="content">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li>
+                <a th:href="@{/music/profile/{username}(username=${displayProfile.getUsername()})}">Song List</a>
+            </li>
+            <li>
+                <a th:href="@{/music/profile/{username}/suggestions(username=${displayProfile.getUsername()})}">Suggestions</a>
+            </li>
+
+            <li>
+                <a style="color:#999999" type="button" data-toggle="modal" data-target="#uploadSuggestionModal">Add Suggestion</a>
+            </li>
+
+
+        </ul>
+    </div>
+</div>
+<div class="container">
+
+
+
+    <section class="details-card">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-content">
+                        <div class="card-img">
+                            <img th:src="'data:image/jpeg;base64,' + ${displayProfile.getTop1song().getImage().generateBase64Image()}" alt="">
+                        </div>
+                        <div class="card-desc">
+                            <h3 th:text="${displayProfile.getTop1song().getName()}"></h3>
+                            <p th:text = "${displayProfile.getTop1song().getArtist()}"></p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-content">
+                        <div class="card-img">
+                            <img th:src="'data:image/jpeg;base64,' + ${displayProfile.getTop2song().getImage().generateBase64Image()}" alt="">
+                        </div>
+                        <div class="card-desc">
+                            <h3 th:text="${displayProfile.getTop2song().getName()}"></h3>
+                            <p th:text = "${displayProfile.getTop2song().getArtist()}"></p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-content">
+                        <div class="card-img">
+                            <img th:src="'data:image/jpeg;base64,' + ${displayProfile.getTop3song().getImage().generateBase64Image()}" alt="">
+                        </div>
+                        <div class="card-desc">
+                            <h3 th:text="${displayProfile.getTop3song().getName()}"></h3>
+                            <p th:text = "${displayProfile.getTop3song().getArtist()}"></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div th:each="song : ${displayProfile.getSongs()}" class="col-10 song-list" >
+
+
+        <div class="media row">
+
+            <img class="d-flex align-self-start" th:src="'data:image/jpeg;base64,' + ${song.getImage().generateBase64Image()}" alt="Generic placeholder image">
+            <div class="media-body pl-3">
+                <div class="songName" th:text="${song.getName()}"></div>
+                <div class="songArtist" th:text="${song.getArtist()}"></div>
+
+
+            </div>
+        </div>
+        <button type="button" class="commentsButton">
+            <i class="comment-icon far fa-comment-alt"></i>
+            <span th:text="${song.getComments().size()}" class="comments-count"></span>
+        </button>
+
+        <div class="comments">
+            <div class="be-comment">
+                <div class="be-img-comment">
+                    <a href="blog-detail-2.html">
+                        <img th:src="'data:image/jpeg;base64,' + ${currentProfile.getProfilePicture().generateBase64Image()}" class="be-ava-comment" alt="">
+                    </a>
+                </div>
+                <div class="be-comment-content">
+
+				<span class="be-comment-name">
+					<a th:text="|${currentProfile.getFirstName()} ${currentProfile.getLastName()}|"></a>
+					</span>
+                    </span>
+
+                    <form th:action="@{/music/comment/add}" method="post" >
+                        <input type="text" placeholder="Add Comment.." name="content" class="add-comment be-comment-text">
+                        <input type="hidden" th:value="${song.getId()}" name="songId">
+                        <input type="hidden" th:value="${displayProfile.getUsername()}" name="username">
+                        <button class="comment-submit-button" type="submit" value="">submit</button>
+
+
+                    </form>
+                </div>
+            </div>
+            <div th:each="comment : ${song.getCommentsInOrder()}">
+                <div class="be-comment">
+                    <div class="be-img-comment">
+
+                        <img th:src="'data:image/jpeg;base64,' + ${comment.getAuthor().getProfilePicture().generateBase64Image()}" alt="" class="be-ava-comment">
+
+                    </div>
+                    <div class="be-comment-content">
+
+				    <span class="be-comment-name">
+                        <a th:text="|${comment.getAuthor().getFirstName()} ${comment.getAuthor().getLastName()}|"></a>
+					    </span>
+                        <span class="be-comment-time">
+					    <i th:text="|${comment.getDate()} at ${comment.getTime()}|"class="fa fa-clock-o"></i>
+
+				    </span>
+                        <div class="text-area">
+                            <p th:text="${comment.getContent()}" class="comment-content be-comment-text">
+                            </p>
+                            <div th:if="${comment.getAuthor().getUsername() == currentProfile.getUsername()}">
+                                <a th:href="@{/{username}/comment/update/{id}(username=${displayProfile.getUsername()}, id=${comment.getId()})}" id="editCommentButton" class="comment-edit-button" >edit</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <div class="modal fade" id="editCommentModal" tabindex="-1" role="dialog" aria-labelledby="editCommentModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form id="editCommentForm" action="#" th:action="@{/comment/update}" method="post"  enctype="multipart/form-data" >
+                        <label>
+                            <input type="text" required minlength="1" name="content" id="content"  class="input">
+                            <div class="line-box">
+                                <div class="line"></div>
+                            </div>
+                            <input type="hidden" th:value="${displayProfile.getUsername()}" name="displayProfileUsername">
+                            <input type="hidden" name="id" id="commentId">
+
+
+                        </label>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <button id="edit-comment-submit-button" class="comment-form-submit-button" type="submit" value="">submit</button>
+                            </div>
+                            <div class="col-lg-4">
+
+                                <a id="delete-comment-button" href="" class="comment-form-submit-button">delete</a>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="uploadSuggestionModal" tabindex="-1" role="dialog" aria-labelledby="uploadSuggestionModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form id="uploadSuggestionForm" action="#" th:action="@{/music/profile/{username}(username=${displayProfile.getUsername()})}" method="post"  enctype="multipart/form-data" >
+                        <label>
+                            <p class="label-txt">Song Name</p>
+                            <input type="text" required minlength="1" maxlength="20" name="name"  class="input">
+                            <div class="line-box">
+                                <div class="line"></div>
+                            </div>
+                        </label>
+                        <label>
+                            <p class="label-txt">Artist Name</p>
+                            <input type="text" class="input" minlength="1" maxlength="20" name = "artist">
+                            <div class="line-box">
+                                <div class="line"></div>
+                            </div>
+                        </label>
+                        <label>
+                            <p class="label-txt">Reference Link</p>
+                            <input type="text" name="songUrl"  class="input" >
+                            <div class="line-box">
+                                <div class="line"></div>
+                            </div>
+                        </label>
+                        <label>
+                            <p class="label-txt">Image</p>
+                            <input class="uploadFile" type="file" name ="file" value="">
+
+                        </label>
+                        <button class="formSubmitButton" type="submit" value="">submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="modal fade" id="updateSongModal" tabindex="-1" role="dialog" aria-labelledby="updateSongModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form id="updateSongForm" action="#" th:action="@{/music/update}" method="post"  enctype="multipart/form-data" >
+                        <input style="visibility: hidden" required minlength="1" maxlength="20" type="text" name="id" id="id"  class="input" value="">
+                        <label>
+                            <p class="label-txt">Song Name</p>
+                            <input type="text" name="name" id="name"  class="input" value="">
+                            <div class="line-box">
+                                <div class="line"></div>
+                            </div>
+                        </label>
+                        <label>
+                            <p class="label-txt">Artist Name</p>
+                            <input type="text" class="input" minlength="1" maxlength="20" name = "artist" id="artist" value="">
+                            <div class="line-box">
+                                <div class="line"></div>
+                            </div>
+                        </label>
+                        <label>
+                            <p class="label-txt">Reference Link</p>
+                            <input type="url" name="songUrl" id="songUrl" class="input" value="" >
+                            <div class="line-box">
+                                <div class="line"></div>
+                            </div>
+                        </label>
+                        <label>
+                            <p class="label-txt">Image</p>
+                            <input class="uploadFile" type="file" name = "file" id="file" value="">
+
+                        </label>
+                        <button class="formSubmitButton" type="submit" value="">submit</button>
+                        <a id="delete" href="" style="text-decoration: none" class="formSubmitButton">delete</a>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>EditProfile</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src = "/static/scripts/editProfileScript.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/profile/currentProfile/editProfileStyle.css">
+</head>
+<body>
+<div class="container">
+    <h1>Edit Profile</h1>
+    <hr>
+
+
+
+
+    <form action="#" th:action="@{/profile/edit}" th:object="${profileModel}" method="post"  enctype="multipart/form-data" >
+    <div class="row" >
+
+        <!-- left column -->
+        <div class="col-md-3">
+            <div class="text-center">
+                <img th:src="'data:image/jpeg;base64,' + *{profilePicture.generateBase64Image()}" alt="Generic placeholder image" >
+
+                <input type="file" style="margin-top: 30px" class="form-control" name="file">
+            </div>
+        </div>
+
+
+        <!-- edit form column -->
+        <div class="col-md-9 personal-info">
+
+            <h3>Personal info</h3>
+
+            <div class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label id="test" class="col-lg-3 control-label">First name:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" th:field="*{firstName}" name="firstName" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Last name:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" th:field="*{lastName}" name = "lastName" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Country:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" th:field="*{country}" type="text" name="country" value="">
+                    </div>
+                </div>
+                <div class="form-group description-field">
+                    <label class="col-lg-3 control-label">Description:</label>
+                    <div class="col-lg-8">
+                        <textarea class="form-control" rows="3" th:field="*{description}" type="text" name="description" value=""></textarea>
+                    </div>
+                </div>
+                <div class="row">
+
+                <label class="col-lg-4 control-label">Age:</label>
+
+
+                        <label class="col-lg-4 control-label">Gender:</label>
+
+                </div>
+                <div class="row">
+
+                <div class="col-lg-4">
+                <div class="form-group">
+
+
+                        <div class="ui-select">
+                            <select class="form-control" th:field="*{age}">
+                                <option th:each="i : ${#numbers.sequence(0, 100)}" th:value="${i}" th:text="${i}">
+                                </option>
+                            </select>
+                        </div>
+
+                </div>
+                </div>
+                <div class="col-lg-4">
+
+                    <div class="form-group">
+
+
+                            <div class="ui-select">
+                                <select th:field="*{gender}" id="profile-gender" name = "gender" class="form-control">
+                                    <option value="MALE">Male</option>
+                                    <option value="FEMALE">Female</option>
+                                    <option value="OTHER">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button class="formSubmitButton" type="submit">submit</button>
+
+    </div>
+    </form>
+</div>
+
+<hr>
+
+</body>
+
+
+</html>

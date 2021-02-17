@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FriendsSearch</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/profile/social/globalStyle.css">
+</head>
+<body>
+<th:block th:include="~{staticElements/topNav}"/>
+<th:block th:include="~{staticElements/sideNavSocial}"/>
+<div class="content">
+<div class="container py-5">
+
+
+
+
+    <div class="row">
+        <div class="col-sm-8 mx-auto ">
+
+
+            <ul class="list-group shadow">
+
+                <div th:each="profile : ${profiles}">
+
+                <li class="list-group-item">
+
+                    <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                        <div class="media-body order-2 order-lg-1">
+                            <h5 th:text="|${profile.firstName} ${profile.lastName}|" class="mt-0 font-weight-bold mb-2"></h5>
+                            <p th:text="${profile.description}" class="font-italic text-muted mb-0 small"></p>
+                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                <h6 th:text="${profile.country}" class="font-weight-bold my-2"></h6>
+                                <ul class="list-inline small">
+                                </ul>
+                            </div>
+                        </div><img th:src="'data:image/jpeg;base64,' + *{profile.profilePicture.generateBase64Image()}" alt="Generic placeholder image"  class="ml-lg-5 order-1 order-lg-2 search-result-picture">
+
+                    </div>
+
+                    <a class="addFriendButton" th:href="@{/profile/social/sendFriendRequest/{id}(id=${profile.getId()})}">Add Friend</a>
+                </li>
+                </div>
+
+
+
+            </ul>
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+</body>
+</html>

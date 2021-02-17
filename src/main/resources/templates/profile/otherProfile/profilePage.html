@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>OtherProfilePage</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/profile/otherProfile/profilePageStyle.css">
+</head>
+<body>
+<th:block th:include="~{staticElements/topNav}"/>
+
+<div class="content">
+    <div class="layout-content">
+
+        <!-- Content -->
+        <div class="container flex-grow-1 container-p-y">
+
+            <!-- Header -->
+            <div class="container-m-nx container-m-ny theme-bg-white mb-4">
+                <div class="media col-md-10 col-lg-8 col-xl-7 py-5 mx-auto">
+                    <img th:src="'data:image/jpeg;base64,' + ${profile.getProfilePicture().generateBase64Image()}" alt="Generic placeholder image" class="d-block ui-w-100 rounded-circle">
+                    <div class="media-body ml-5">
+                        <h4 class="font-weight-bold mb-4" th:text="|${profile.firstName} ${profile.lastName}|"></h4>
+                        <div class="text-muted mb-4" th:text="${profile.getDescription()}"></div>
+                    </div>
+                </div>
+                <hr class="m-0">
+            </div>
+            <!-- Header -->
+
+            <div class="row">
+                <div class="col">
+
+                    <!-- Info -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+
+                            <div class="row mb-2">
+                                <div class="col-md-3 text-muted">Birthday:</div>
+                                <div class="col-md-9">
+                                    May 3, 1995
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-md-3 text-muted">Country:</div>
+                                <div class="col-md-9">
+                                    <a href="javascript:void(0)" class="text-body">Canada</a>
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-md-3 text-muted">Languages:</div>
+                                <div class="col-md-9">
+                                    <a href="javascript:void(0)" class="text-body">English</a>
+                                </div>
+                            </div>
+
+                            <h6 class="my-3">Contacts</h6>
+
+                            <div class="row mb-2">
+                                <div class="col-md-3 text-muted">Phone:</div>
+                                <div class="col-md-9">
+                                    +0 (123) 456 7891
+                                </div>
+                            </div>
+
+                            <h6 class="my-3">Interests</h6>
+
+                            <div class="row mb-2">
+                                <div class="col-md-3 text-muted">Favorite music:</div>
+                                <div class="col-md-9">
+                                    <a  class="text-body">Rock</a>,
+                                    <a  class="text-body">Alternative</a>,
+                                    <a  class="text-body">Electro</a>,
+                                    <a  class="text-body">Drum &amp; Bass</a>,
+                                    <a  class="text-body">Dance</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 text-muted">Favorite movies:</div>
+                                <div class="col-md-9">
+                                    <a href="javascript:void(0)" class="text-body">The Green Mile</a>,
+                                    <a href="javascript:void(0)" class="text-body">Pulp Fiction</a>,
+                                    <a href="javascript:void(0)" class="text-body">Back to the Future</a>,
+                                    <a href="javascript:void(0)" class="text-body">WALL·E</a>,
+                                    <a href="javascript:void(0)" class="text-body">Django Unchained</a>,
+                                    <a href="javascript:void(0)" class="text-body">The Truman Show</a>,
+                                    <a href="javascript:void(0)" class="text-body">Home Alone</a>,
+                                    <a href="javascript:void(0)" class="text-body">Seven Pounds</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- / Info -->
+
+                    <!-- Posts -->
+
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p>
+                                Aliquam varius euismod lectus, vel consectetur nibh tincidunt vitae. In non dignissim est. Sed eu ligula metus. Vivamus eget quam sit amet risus venenatis laoreet ut vel magna. Sed dui ligula, tincidunt in nunc eu, rhoncus iaculis nisi.
+                            </p>
+                            <p>
+                                Sed et convallis odio, vel laoreet tellus. Vivamus a leo eu metus porta pulvinar. Pellentesque tristique varius rutrum.
+                            </p>
+                            <div class="ui-bordered">
+                                <a href="javascript:void(0)" class="ui-rect ui-bg-cover text-white" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');">
+                                    <div class="d-flex justify-content-start align-items-end ui-rect-content p-2">
+                                        <div class="bg-dark rounded text-white small py-1 px-2">
+                                            <i class="ion ion-md-link"></i> &nbsp; external.com/some/page
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="p-4">
+                                    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h5>
+                                    Duis ut quam nec mi bibendum finibus et id tortor. Maecenas tristique dolor enim, sed tristique sem cursus et. Etiam tempus iaculis blandit. Vivamus a justo a elit bibendum pulvinar ut non erat. Cras in purus sed leo mattis consequat viverra id arcu.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="javascript:void(0)" class="d-inline-block text-muted">
+                                <small class="align-middle">
+                                    <strong>123</strong> Likes</small>
+                            </a>
+                            <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
+                                <small class="align-middle">
+                                    <strong>12</strong> Comments</small>
+                            </a>
+                            <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
+                                <i class="ion ion-md-share align-middle"></i>&nbsp;
+                                <small class="align-middle">Repost</small>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus commodo bibendum. Vivamus laoreet blandit odio, vel finibus quam dictum ut.
+                            </p>
+                            <a href="javascript:void(0)" class="ui-rect ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></a>
+                        </div>
+                        <div class="card-footer">
+                            <a href="javascript:void(0)" class="d-inline-block text-muted">
+                                <small class="align-middle">
+                                    <strong>123</strong> Likes</small>
+                            </a>
+                            <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
+                                <small class="align-middle">
+                                    <strong>12</strong> Comments</small>
+                            </a>
+                            <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
+                                <i class="ion ion-md-share align-middle"></i>&nbsp;
+                                <small class="align-middle">Repost</small>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p>
+                                Aliquam viverra ornare tincidunt. Vestibulum sit amet vestibulum quam. Donec eu est non velit rhoncus interdum eget vel lorem.
+                            </p>
+
+                            <div class="border-top-0 border-right-0 border-bottom-0 ui-bordered pl-3 mt-4 mb-2">
+                                <div class="media mb-3">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" class="d-block ui-w-40 rounded-circle" alt="">
+                                    <div class="media-body ml-3">
+                                        Kenneth Frazier
+                                        <div class="text-muted small">3 days ago</div>
+                                    </div>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus commodo bibendum. Vivamus laoreet blandit odio, vel finibus quam dictum ut.
+                                </p>
+                                <a href="javascript:void(0)" class="ui-rect ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></a>
+                            </div>
+                            <a href="javascript:void(0)" class="text-muted small">Reposted from @kfrazier/posts/123</a>
+                        </div>
+                        <div class="card-footer">
+                            <a href="javascript:void(0)" class="d-inline-block text-muted">
+                                <small class="align-middle">
+                                    <strong>123</strong> Likes</small>
+                            </a>
+                            <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
+                                <small class="align-middle">
+                                    <strong>12</strong> Comments</small>
+                            </a>
+                            <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
+                                <i class="ion ion-md-share align-middle"></i>&nbsp;
+                                <small class="align-middle">Repost</small>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- / Posts -->
+
+                </div>
+                <div class="col-xl-4">
+
+
+
+
+
+                    <!-- Friends -->
+                    <div class="card mb-4">
+                        <div class="card-header with-elements">
+                    <span class="card-header-title">Friends &nbsp;
+                      <small class="text-muted" th:text="${profile.getFriends().size()}"></small>
+                    </span>
+                        </div>
+                        <div class="row no-gutters row-bordered row-border-light">
+                            <div th:each="friend,iterStat : ${profile.getFriends()}" th:if="${iterStat.index}<10">
+                                <a href="javascript:void(0)" class="friends-window d-flex flex-column text-body py-3 px-2">
+                                    <img th:src="'data:image/jpeg;base64,' + ${friend.getProfilePicture().generateBase64Image()}" alt="" class="d-block ui-w-40 rounded-circle mb-2">
+                                    <div class="text-center small" th:text="|${friend.getFirstName()} ${friend.getLastName()}|"></div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- / Friends -->
+                    <!-- Music -->
+                    <div class="card mb-4">
+                        <div class="card-header href">
+                            <a class="card-header-title" th:href="@{/music/profile/{username}(username=${profile.getUsername()})}" >Songs</a>
+                      <small class="text-muted" th:text="${profile.getSongs().size()}"></small>
+                    </span>
+                        </div>
+                        <div th:each="song,iterStat : ${profile.getSongs()}">
+                            <div class="row song-window">
+                                <img class="d-block ui-w-40 rounded-circle mb-2" th:src="'data:image/jpeg;base64,' + ${song.getImage().generateBase64Image()}" alt="Generic placeholder image">
+                                <div class="song-name">
+                                    <div class="songName" th:text="${song.getName()}"></div>
+                                    <div class="songArtist" th:text="${song.getArtist()}"></div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Music -->
+
+                    <!-- Photos -->
+                    <div class="card mb-4">
+                        <div class="card-header with-elements">
+                            <span class="card-header-title">Photos</span>
+                            <div class="card-header-elements ml-2">
+                                <small class="text-muted">54</small>
+                            </div>
+                            <div class="card-header-elements ml-md-auto">
+                                <a href="javascript:void(0)" class="btn btn-default md-btn-flat btn-xs">Show More</a>
+                            </div>
+                        </div>
+                        <div class="row no-gutters align-items-start pt-1 pl-1">
+
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+                            <a href="javascript:void(0)" class="d-block col-3 col-sm-2 col-lg-3 pr-1 pb-1">
+                                <span class="d-block ui-square ui-bg-cover" style="background-image: url('https://via.placeholder.com/350x180/E6E6FA/000000');"></span>
+                            </a>
+
+                        </div>
+                    </div>
+                    <!-- / Photos -->
+
+                </div>
+            </div>
+
+        </div>
+        <!-- / Content -->
+
+        <!-- Layout footer -->
+        <nav class="layout-footer footer bg-footer-theme">
+            <div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
+                <div class="pt-3">
+                    <span class="footer-text font-weight-bolder">Appwork</span> ©
+                </div>
+                <div>
+                    <a href="javascript:void(0)" class="footer-link pt-3">About Us</a>
+                    <a href="javascript:void(0)" class="footer-link pt-3 ml-4">Help</a>
+                    <a href="javascript:void(0)" class="footer-link pt-3 ml-4">Contact</a>
+                    <a href="javascript:void(0)" class="footer-link pt-3 ml-4">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </nav>
+        <!-- / Layout footer -->
+
+    </div>
+</div>
+
+<footer class="footer">
+    <p>Footer Text</p>
+</footer>
+
+</body>
+</html>

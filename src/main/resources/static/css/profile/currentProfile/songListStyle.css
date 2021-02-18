@@ -301,28 +301,8 @@ footer {
     width: 300px;
 
 }
-.AddSongButton
-{
 
-    padding: 12px 24px;
-    background: rgb(220,220,220);
-    font-weight: bold;
-    color: rgb(120,120,120) !important;
-    border: none;
-    outline: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: ease .3s;
-
-
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-.AddSongButton:hover{
-    background: dimgrey;
-    color: white !important;
-}
-.commentsButton, .likeButton, .dislikeButton
+.commentsButton
 {
 
     width:81px;
@@ -337,6 +317,7 @@ footer {
     padding:3px;
     border-radius: 50px;
     outline:none;
+    margin-left: 95%;
 
 
     font-size: 20px;
@@ -345,16 +326,15 @@ footer {
 
 
 }
-.likeButton{
-    margin-left:643px;
-}
+
 .commentsButton:hover, .active,  .likeButton:hover, .dislikeButton:hover{
     background: dimgrey;
     color: white;
 }
-.commentsButton:focus, .likeButton:focus, .dislikeButton:focus{
+.commentsButton:focus, .likeButton:focus, .dislikeButton:focus {
     outline: none;
 }
+
 
 .editSongButton{
     margin-top:70px;
@@ -363,10 +343,7 @@ footer {
     top: 50%;
 
 }
-.uploadTopSongButton{
-    position: center;
-    margin-left: 30%;
-}
+
 .content{
     margin-top: 55px;
 }
@@ -463,15 +440,85 @@ section{
     overflow: hidden;
 
 }
-.comment-icon, .dislikes-icon, .likes-icon{
+.add-comment {
+    width:100%;
+}
+.comment-submit-button{
+    padding: 8px 12px;
+    background: rgb(220,220,220);
+    font-weight: bold;
+    color: rgb(120,120,120);
+    border: none;
+    outline: none;
+    margin-left:85%;
+    margin-top:25px;
+
+    border-radius: 3px;
+    cursor: pointer;
+    transition: ease .3s;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+}
+.comment-submit-button:hover{
+    background: dimgrey;
+    color: white;
+}
+.comment-edit-button {
+    padding: 8px 12px;
+    background: rgb(220, 220, 220);
+    font-weight: bold;
+    color: rgb(120, 120, 120);
+    border: none;
+    outline: none;
+    right:10px;
+    top:30px;
+
+    border-radius: 3px;
+    cursor: pointer;
+    transition: ease .3s;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position:absolute;
+
 
 
 
 }
-
-.comments-count, .dislikes-count, .likes-count {
+.comment-edit-button:hover{
+    background: dimgrey;
+    color: white;
+}
+.text-area{
+    position:relative;
+}
+.comment-content{
 
 }
+.comment-form-submit-button{
+    padding: 12px 24px;
+    background: rgb(220,220,220);
+    font-weight: bold;
+    color: rgb(120,120,120);
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: ease .3s;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    text-decoration: none !important;
+    margin-left:70%;
+
+
+
+}
+.comment-form-submit-button:hover{
+    background-color: dimgrey;
+    color:white;
+
+}
+
 
 
 

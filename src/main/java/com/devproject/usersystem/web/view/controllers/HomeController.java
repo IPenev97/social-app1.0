@@ -20,7 +20,7 @@ public class HomeController {
     @GetMapping("/")
     public String getHome(Principal principal, Model model){
         if(principal==null){
-            return "home/homeNotLogged";
+            return "home/homePage";
         }
 
         model.addAttribute("profile", profileService.getProfileByUsername(principal.getName()));

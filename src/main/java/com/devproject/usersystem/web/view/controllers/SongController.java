@@ -51,7 +51,7 @@ public class SongController {
             //TODO Handle Exception
         }
 
-        return "redirect:/music/edit";
+        return "redirect:/music/list";
 
     }
 
@@ -89,13 +89,15 @@ public class SongController {
             //TODO Handle Exception
             return null;
         }
-        System.out.println();
+
         return "redirect:/music/edit";
     }
 
     @GetMapping("/music/{username}")
     public String getAllSongsForProfile(@PathVariable(value = "username") String username, Model model, Principal principal) {
-
+        if(username.equals(principal.getName())){
+            return "redirect:/music/list";
+        }
         ProfileSongsDisplayModel profileModel = profileService.getProfileSongs(username);
         ProfileSongsDisplayModel currentProfileModel = profileService.getProfileSongs(principal.getName());
         model.addAttribute("displayProfile", profileModel);

@@ -322,7 +322,7 @@ footer {
     background: dimgrey;
     color: white !important;
 }
-.commentsButton, .likeButton, .dislikeButton
+.commentsButton
 {
 
     width:81px;
@@ -346,9 +346,7 @@ footer {
 
 
 }
-.likeButton{
-    margin-left:643px;
-}
+
 .commentsButton:hover, .active,  .likeButton:hover, .dislikeButton:hover{
     background: dimgrey;
     color: white;
@@ -466,15 +464,6 @@ section{
 }
 .add-comment {
     width:100%;
-}
-.comment-icon, .dislikes-icon, .likes-icon{
-
-
-
-}
-
-.comments-count, .dislikes-count, .likes-count {
-
 }
 .comment-submit-button{
     padding: 8px 12px;

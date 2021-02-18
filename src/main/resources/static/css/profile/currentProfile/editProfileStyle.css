@@ -8,6 +8,9 @@ body{
  * Panels
  */
 /*** General styles ***/
+.content{
+    margin-top: 55px;
+}
 .panel {
     box-shadow: none;
 }

@@ -230,7 +230,16 @@ footer {
     width: 300px;
 
 }
-.AddSongButton
+
+
+.editSongButton{
+    margin-top:70px;
+    margin-left: 20px;
+    position: relative;
+    top: 50%;
+
+}
+.addSongButton
 {
 
     padding: 12px 24px;
@@ -242,25 +251,16 @@ footer {
     border-radius: 3px;
     cursor: pointer;
     transition: ease .3s;
+    position: center;
+    margin-left: 30%;
 
 
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
-.AddSongButton:hover{
+.addSongButton:hover{
     background: dimgrey;
     color: white !important;
-}
-.editSongButton{
-    margin-top:70px;
-    margin-left: 20px;
-    position: relative;
-    top: 50%;
-
-}
-.uploadTopSongButton{
-    position: center;
-    margin-left: 30%;
 }
 .content{
     margin-top: 55px;

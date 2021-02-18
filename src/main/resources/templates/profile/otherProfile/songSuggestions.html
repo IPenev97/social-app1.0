@@ -18,7 +18,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <script src="/scripts/songListScript.js"></script>
+    <script src="/scripts/songSuggestionsScript.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
@@ -33,10 +33,10 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li>
-                <a th:href="@{/music/profile/{username}(username=${displayProfile.getUsername()})}">Song List</a>
+                <a th:href="@{/music/{username}(username=${displayProfile.getUsername()})}">Song List</a>
             </li>
             <li>
-                <a th:href="@{/music/profile/{username}/suggestions(username=${displayProfile.getUsername()})}">Suggestions</a>
+                <a th:href="@{/music/{username}/suggestions(username=${displayProfile.getUsername()})}">Suggestions</a>
             </li>
 
             <li>
@@ -47,7 +47,7 @@
         </ul>
     </div>
 </div>
-<div class="container">
+<div class="container" style="margin-top:50px;">
 
 
 
@@ -85,7 +85,7 @@
 					</span>
                     </span>
 
-                    <form th:action="@{/music/comment/add}" method="post" >
+                    <form th:action="@{/music/suggestions/comment/add}" method="post" >
                         <input type="text" placeholder="Add Comment.." name="content" class="add-comment be-comment-text">
                         <input type="hidden" th:value="${song.getId()}" name="songId">
                         <input type="hidden" th:value="${displayProfile.getUsername()}" name="username">
@@ -115,7 +115,7 @@
                             <p th:text="${comment.getContent()}" class="comment-content be-comment-text">
                             </p>
                             <div th:if="${comment.getAuthor().getUsername() == currentProfile.getUsername()}">
-                                <a th:href="@{/{username}/comment/update/{id}(username=${displayProfile.getUsername()}, id=${comment.getId()})}" id="editCommentButton" class="comment-edit-button" >edit</a>
+                                <a th:href="@{/{username}/comment/{id}(username=${displayProfile.getUsername()}, id=${comment.getId()})}" id="editCommentButton" class="comment-edit-button" >edit</a>
                             </div>
                         </div>
 
@@ -132,13 +132,12 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form id="editCommentForm" action="#" th:action="@{/comment/update}" method="post"  enctype="multipart/form-data" >
+                    <form id="editCommentForm" action="#" th:action="@{/music/{username}/suggestions/comment/update(username=${displayProfile.getUsername()})}" method="post"  enctype="multipart/form-data" >
                         <label>
                             <input type="text" required minlength="1" name="content" id="content"  class="input">
                             <div class="line-box">
                                 <div class="line"></div>
                             </div>
-                            <input type="hidden" th:value="${displayProfile.getUsername()}" name="displayProfileUsername">
                             <input type="hidden" name="id" id="commentId">
 
 
@@ -165,7 +164,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form id="uploadSuggestionForm" action="#" th:action="@{/music/profile/{username}/suggestions(username=${displayProfile.getUsername()})}" method="post"  enctype="multipart/form-data" >
+                    <form id="uploadSuggestionForm" action="#" th:action="@{/music/{username}/suggestions(username=${displayProfile.getUsername()})}" method="post"  enctype="multipart/form-data" >
                         <label>
                             <p class="label-txt">Song Name</p>
                             <input type="text" required minlength="1" maxlength="20" name="name"  class="input">

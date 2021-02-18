@@ -33,10 +33,10 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li>
-                <a th:href="@{/music/profile/{username}(username=${displayProfile.getUsername()})}">Song List</a>
+                <a th:href="@{/music/{username}(username=${displayProfile.getUsername()})}">Song List</a>
             </li>
             <li>
-                <a th:href="@{/music/profile/{username}/suggestions(username=${displayProfile.getUsername()})}">Suggestions</a>
+                <a th:href="@{/music/{username}/suggestions(username=${displayProfile.getUsername()})}">Suggestions</a>
             </li>
 
             <li>
@@ -124,7 +124,7 @@
 				<span class="be-comment-name">
 					<a th:text="|${currentProfile.getFirstName()} ${currentProfile.getLastName()}|"></a>
 					</span>
-				</span>
+                    </span>
 
                     <form th:action="@{/music/comment/add}" method="post" >
                         <input type="text" placeholder="Add Comment.." name="content" class="add-comment be-comment-text">
@@ -137,13 +137,13 @@
                 </div>
             </div>
             <div th:each="comment : ${song.getCommentsInOrder()}">
-            <div class="be-comment">
-                <div class="be-img-comment">
+                <div class="be-comment">
+                    <div class="be-img-comment">
 
                         <img th:src="'data:image/jpeg;base64,' + ${comment.getAuthor().getProfilePicture().generateBase64Image()}" alt="" class="be-ava-comment">
 
-                </div>
-                <div class="be-comment-content">
+                    </div>
+                    <div class="be-comment-content">
 
 				    <span class="be-comment-name">
                         <a th:text="|${comment.getAuthor().getFirstName()} ${comment.getAuthor().getLastName()}|"></a>
@@ -156,7 +156,7 @@
                             <p th:text="${comment.getContent()}" class="comment-content be-comment-text">
                             </p>
                             <div th:if="${comment.getAuthor().getUsername() == currentProfile.getUsername()}">
-                                <a th:href="@{/{username}/comment/update/{id}(username=${displayProfile.getUsername()}, id=${comment.getId()})}" id="editCommentButton" class="comment-edit-button" >edit</a>
+                                <a th:href="@{/{username}/comment/{id}(username=${displayProfile.getUsername()}, id=${comment.getId()})}" id="editCommentButton" class="comment-edit-button" >edit</a>
                             </div>
                         </div>
 
@@ -173,26 +173,25 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form id="editCommentForm" action="#" th:action="@{/comment/update}" method="post"  enctype="multipart/form-data" >
+                    <form id="editCommentForm" action="#" th:action="@{/music/{username}/comment/update(username=${displayProfile.getUsername()})}" method="post"  enctype="multipart/form-data" >
                         <label>
                             <input type="text" required minlength="1" name="content" id="content"  class="input">
                             <div class="line-box">
                                 <div class="line"></div>
                             </div>
-                            <input type="hidden" th:value="${displayProfile.getUsername()}" name="displayProfileUsername">
                             <input type="hidden" name="id" id="commentId">
 
 
                         </label>
                         <div class="row">
-                        <div class="col-lg-4">
-                        <button id="edit-comment-submit-button" class="comment-form-submit-button" type="submit" value="">submit</button>
-                        </div>
-                        <div class="col-lg-4">
+                            <div class="col-lg-4">
+                                <button id="edit-comment-submit-button" class="comment-form-submit-button" type="submit" value="">submit</button>
+                            </div>
+                            <div class="col-lg-4">
 
-                        <a id="delete-comment-button" href="" class="comment-form-submit-button">delete</a>
+                                <a id="delete-comment-button" href="" class="comment-form-submit-button">delete</a>
 
-                        </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -200,49 +199,6 @@
             </div>
         </div>
     </div>
-
-
-    <div class="modal fade" id="uploadSuggestionModal" tabindex="-1" role="dialog" aria-labelledby="uploadSuggestionModal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <form id="uploadSuggestionForm" action="#" th:action="@{/music/profile/{username}(username=${displayProfile.getUsername()})}" method="post"  enctype="multipart/form-data" >
-                        <label>
-                            <p class="label-txt">Song Name</p>
-                            <input type="text" required minlength="1" maxlength="20" name="name"  class="input">
-                            <div class="line-box">
-                                <div class="line"></div>
-                            </div>
-                        </label>
-                        <label>
-                            <p class="label-txt">Artist Name</p>
-                            <input type="text" class="input" minlength="1" maxlength="20" name = "artist">
-                            <div class="line-box">
-                                <div class="line"></div>
-                            </div>
-                        </label>
-                        <label>
-                            <p class="label-txt">Reference Link</p>
-                            <input type="text" name="songUrl"  class="input" >
-                            <div class="line-box">
-                                <div class="line"></div>
-                            </div>
-                        </label>
-                        <label>
-                            <p class="label-txt">Image</p>
-                            <input class="uploadFile" type="file" name ="file" value="">
-
-                        </label>
-                        <button class="formSubmitButton" type="submit" value="">submit</button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
-
 
 
     <div class="modal fade" id="updateSongModal" tabindex="-1" role="dialog" aria-labelledby="updateSongModal" aria-hidden="true">

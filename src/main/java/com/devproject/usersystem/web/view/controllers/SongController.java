@@ -93,7 +93,7 @@ public class SongController {
         return "redirect:/music/edit";
     }
 
-    @GetMapping("/music/profile/{username}")
+    @GetMapping("/music/{username}")
     public String getAllSongsForProfile(@PathVariable(value = "username") String username, Model model, Principal principal) {
 
         ProfileSongsDisplayModel profileModel = profileService.getProfileSongs(username);
@@ -141,9 +141,14 @@ public class SongController {
 
         songService.addCommentToSong(principal.getName(), comment);
 
-        return "redirect:/music/profile/"+comment.getUsername();
+        return "redirect:/music/"+comment.getUsername();
     }
-    @GetMapping("/music/profile/{username}/suggestions")
+    @PostMapping("/music/suggestions/comment/add")
+    public String addCommentToSuggestionSong(@ModelAttribute AddCommentToSongModel comment, Principal principal){
+        songService.addCommentToSong(principal.getName(), comment);
+        return"redirect:/music/"+comment.getUsername()+"/suggestions";
+    }
+    @GetMapping("/music/{username}/suggestions")
     public String getSuggestions(@PathVariable String username, Principal principal, Model model){
         ProfileSongsDisplayModel profileModel = profileService.getProfileSongs(username);
         ProfileSongsDisplayModel currentProfileModel = profileService.getProfileSongs(principal.getName());
@@ -151,7 +156,7 @@ public class SongController {
         model.addAttribute("currentProfile", currentProfileModel);
         return "profile/otherProfile/songSuggestions";
     }
-    @PostMapping("/music/profile/{username}/suggestions")
+    @PostMapping("/music/{username}/suggestions")
     public String addSuggestion(@PathVariable String username,@RequestParam("file") MultipartFile file, @ModelAttribute SongUploadModel suggestionModel){
         try {
             profileService.addSongSuggestionToProfile(username, suggestionModel, file);
@@ -159,7 +164,7 @@ public class SongController {
         catch (IOException e){
             //TODO : HANDLE exception
         }
-        return "redirect:/music/profile/"+username+"/suggestions";
+        return "redirect:/music/"+username+"/suggestions";
     }
 }
 

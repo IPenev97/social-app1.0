@@ -231,9 +231,9 @@
                     <!-- Music -->
                     <div class="card mb-4">
                         <div class="card-header href">
-                            <a class="card-header-title" th:href="@{/music/profile/{username}(username=${profile.getUsername()})}" >Songs</a>
-                      <small class="text-muted" th:text="${profile.getSongs().size()}"></small>
-                    </span>
+                            <a class="card-header-title" th:href="@{/music/{username}(username=${profile.getUsername()})}" >Songs</a>
+                            <small class="text-muted" th:text="${profile.getSongs().size()}"></small>
+                            </span>
                         </div>
                         <div th:each="song,iterStat : ${profile.getSongs()}">
                             <div class="row song-window">

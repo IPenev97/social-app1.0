@@ -21,7 +21,7 @@ $(document).ready(function(){
         $.get(href,function(comment){
             $('#editCommentModal #commentId').val(comment.id);
             $('#editCommentModal #content').val(comment.content);
-            $('#editCommentModal #delete-comment-button').attr('href','/music/comment/delete/'.concat(comment.displayProfileUsername,'/',comment.id));
+            $('#editCommentModal #delete-comment-button').attr('href','/suggestions/comment/delete/'.concat(comment.displayProfileUsername,'/',comment.id));
 
         });
         $('#editCommentModal').modal('show');

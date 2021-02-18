@@ -21,20 +21,37 @@ public class CommentController {
         this.songService = songService;
 
     }
-    @GetMapping("/{username}/comment/update/{id}")
+    @GetMapping("/{username}/comment/{id}")
     @ResponseBody
     public CommentWebModel getComment(@PathVariable(value="username") String username, @PathVariable(value="id") Long id){
         CommentWebModel commentModel = commentService.getCommentWebModelById(id);
         commentModel.setDisplayProfileUsername(username);
         return commentModel;
     }
-    @GetMapping("/comment/delete/{username}/{id}")
+    @PostMapping("/music/{username}/suggestions/comment/update")
+    public String updateSuggestionComment(@PathVariable String username, @ModelAttribute CommentWebModel commentModel){
+        commentService.updateComment(commentModel);
+        return "redirect:/music/"+username+"/suggestions";
+    }
+    @PostMapping("/music/{username}/comment/update")
+    public String updateSongComment(@PathVariable String username, @ModelAttribute CommentWebModel commentModel){
+        commentService.updateComment(commentModel);
+        return "redirect:/music/"+username;
+    }
+    @GetMapping("/music/comment/delete/{username}/{id}")
     public String deleteComment(@PathVariable Long id, @PathVariable String username, Principal principal){
-        System.out.println();
+
         profileService.deleteCommentFromProfile(principal.getName(), id);
         songService.deleteCommentFromSong(commentService.getCommentWebModelById(id).getSongId(), id);
 
 
-        return "redirect:/music/profile/"+username;
+        return "redirect:/music/"+username;
+    }
+    @GetMapping("/suggestions/comment/delete/{username}/{id}")
+    public String deleteSuggestionComment(@PathVariable Long id, @PathVariable String username, Principal principal){
+        profileService.deleteCommentFromProfile(principal.getName(),id);
+        songService.deleteCommentFromSong(commentService.getCommentWebModelById(id).getSongId(), id);
+
+        return "redirect:/music/"+username+"/suggestions";
     }
 }
